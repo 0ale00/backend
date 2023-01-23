@@ -8,17 +8,30 @@ lines
 
 # another comment type
 $name = "Paolo";
-echo "Il mio nome è " . $name;
+echo "Il mio nome è " . $name."<br>";
 
 
 /**
- * print_my_name
- *
+ * Stampa il nome
  * @param  mixed $name
  * @return void
  */
-function printMyName($name)
+function printMyName(string $name) : void
 {
     echo "<strong>Ciao " . $name . "!</strong>";
 }
 printMyName($name);
+
+/**
+ * Ritorna la somma di due interi
+ *
+ * @param  mixed $a
+ * @param  mixed $b
+ * @return int
+ */
+function somma(int $a, int $b) : int
+{
+    return $a + $b;
+}
+
+echo "<br>Somma: ".somma(3, 5);
