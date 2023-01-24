@@ -42,4 +42,4 @@ echo $b . '<br>';
 $a= 16; $b = 14;
 echo "a = $a  e b = $b <br><hr>";
 $a -= $b; //$a = $a - $b
-echo $b;
+echo $a;

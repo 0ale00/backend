@@ -8,6 +8,7 @@ var_dump($a == $b);
 var_dump($a == $c);
 var_dump($b == $c);
 var_dump($a === $b);
+echo '<br>';
 
 $a = 9;
 $b = 8;
@@ -22,6 +23,7 @@ if ($a > $b) {
 } else {
     echo "a is smaller than b<br>";
 }
+echo "**********<br>";
 
 $a = 8;
 $b = 8.00;
