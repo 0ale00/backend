@@ -85,7 +85,7 @@ function calculateDiscount($price, $percentDiscount): float
 function checkIfLast($qta)
 {
     if ($qta == 0) {
-        //TODO in ROSSO
+       
         return "ESAURITO";
     } elseif ($qta == 1) {
         return "ULTIMO";
