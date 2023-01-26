@@ -38,9 +38,9 @@ echo "<br>";
 $x = 1;
 
 do {
-    echo "The number is: $x <br>";
-    $x++;
-} while ($x <= 5);
+    echo "The number is: $x <br>"; // x è 1
+    $x++; // x viene incrementata
+} while ($x <= 5); // x viene incrementata finchè non è minore o uguale a 5
 
 echo "<hr>";
 
@@ -197,3 +197,11 @@ foreach ($stack as $v) {
 
     echo $v . '<br>';
 }
+
+
+
+$people = array('Giorgio', 'Paola', 'Maria');
+
+echo "<pre>";
+print_r($people);
+echo "</pre>";
