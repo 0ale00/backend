@@ -11,10 +11,10 @@ $food = array(
 );
 
 // recursive count
-var_dump(count($food, COUNT_RECURSIVE));
+var_dump(count($food, COUNT_RECURSIVE)); // output int(8)
 
 // normal count
-var_dump(count($food));
+var_dump(count($food)); // output int(2)
 
 $os = array("Mac", "NT", "Irix", "Linux");
 if (in_array("Irix", $os)) {
