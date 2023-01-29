@@ -132,7 +132,7 @@ $callTest("Paolo");  //call function
 //FUNZIONI ANONIME
 
 $greet = function($name) {
-    printf("Hello %s\r\n", $name);
+    printf("Hello %s <br> ", $name);
 };
 
 $greet('World');
