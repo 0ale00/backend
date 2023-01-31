@@ -42,3 +42,4 @@ if (($_SESSION['count'] > 2) && ($_SESSION['name'] == 'Mario')) {
     session_destroy();
     setcookie("count", "", time() - 3600);//per cancellare un cookie
 }
+
