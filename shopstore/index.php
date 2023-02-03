@@ -1,12 +1,11 @@
 <?php
 require_once "inc/functions.php";
-require_once "data/data.php";
 require_once "inc/header.php";
 require_once "inc/navbar.php";
 ?>
 <div class="container px-4 py-5" id="custom-cards">
     <p>
-        <?php if ($_SESSION["isAdmin"]) {
+        <?php if (isset($_SESSION["isAdmin"])) {
             echo "<span class='text-danger'>ADMIN: </span>";
         } else {
             echo "Ciao, ";

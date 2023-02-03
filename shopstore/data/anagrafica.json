@@ -1,1 +1,23 @@
-[{"nome":"ale","cognome":"gra","username":"ale","pwd":"1234","photo":"https:\/\/dummyimage.com\/300"},{"nome":"ale","cognome":"gra","username":"ale","pwd":"1234","photo":"https:\/\/dummyimage.com\/300"},{"nome":"ale","cognome":"gra","username":"ale","pwd":"1234","photo":"https:\/\/dummyimage.com\/300"},{"nome":"ale","cognome":"gra","username":"ale","pwd":"1234","photo":"https:\/\/dummyimage.com\/300"},{"nome":"abc","cognome":"def","username":"abc","pwd":"1235","photo":"https:\/\/dummyimage.com\/300"},{"nome":"Alessia","cognome":"Grande","username":"ale","pwd":"ale","photo":"https:\/\/dummyimage.com\/300"},{"nome":"Alessia","cognome":"Grande","username":"ale","pwd":"ale","photo":"https:\/\/dummyimage.com\/300"}]
+[
+    {
+    "nome": "Alessia",
+    "cognome": "Grande",
+    "username": "ale",
+    "pwd": "ale",
+    "photo": "https://dummyimage.com/300"
+  },
+    {
+    "nome": "guest",
+    "cognome": "guest",
+    "username": "guest",
+    "pwd": "guest",
+    "photo": "https://dummyimage.com/300"
+  },
+    {
+    "nome": "guest1",
+    "cognome": "guest1",
+    "username": "guest1",
+    "pwd": "guest1",
+    "photo": "https://dummyimage.com/300"
+  }
+]
