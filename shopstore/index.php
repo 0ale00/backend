@@ -14,7 +14,7 @@ require_once "inc/navbar.php";
     </p>
     <h2 class="pb-2 border-bottom">Le nostre offerte </h2>
 
-    <p>TODO<br> 1)creare un utente admin che possa inserire \modifcare il catalogo
+    <p>TODO<br> 1)creare un utente admin che possa inserire \modifcare il catalogo (GESTISCI)
         <br> 2)il catalogo va portato in json e non come ora.
         <br> 3) salvare tutti i dati inseriti nell'anagrafica (ora solo 4)
         <br> 4) un login e un anagrafica per gli amministratori che possono modifcare\insirire prodotti e vedere anagrfiche dei customers e creare altri utenti admin
@@ -99,15 +99,13 @@ require_once "inc/navbar.php";
     </div>
 </div>
 <?php
-
+$catalogo = readFileJson("data/products.json");
 foreach ($catalogo as $catName => $categorie) {
     foreach ($catalogo[$catName] as $key => $prodotti) {
-        if (is_array($prodotti)) {
-            if ($prodotti['qta'] == 1) {
-                //TODO visualizzare immagine, shuffle e slice per i primi 2, visualizzare bene
-                echo "In " . strtoupper($catName) . " " . $prodotti['nome'] . " <img src='assets/" .
-                    $prodotti['image'] . "'><br>";
-            }
+        if (is_array($prodotti) && ($prodotti['qta'] == 1)) {
+            //TODO visualizzare immagine, shuffle e slice per i primi 2, visualizzare bene
+            echo "In " . strtoupper($catName) . " " . $prodotti['nome'] . " <img src='assets/" .
+                $prodotti['image'] . "'><br>";
         }
     }
 }

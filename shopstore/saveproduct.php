@@ -10,8 +10,10 @@ if ($catalogo == null) {
     $catalogo = array();
 }
 
-$catalogo[] = $_SESSION['userData'];
+//TODO gestire update
 
-$result = updateFileJson($myAnagr, "data/products.json");
-$myAnagr = readFileJson("data/products.json");
-require_once 'login.php';
+$catalogo[strtolower($_REQUEST['category'])][] = $_REQUEST;
+
+$result = updateFileJson($catalogo, "data/products.json");
+
+header("Location: products.php");
