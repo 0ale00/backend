@@ -1,7 +1,7 @@
 <?php
 
 //Variables
-$shopName ="MusaShop";
+$shopName = "MusaShop";
 
 /**
  * showCategory
@@ -14,7 +14,6 @@ function showCategory(array $catalogo, string $catName): void
 {
     foreach ($catalogo[$catName] as $key => $prodotti) {
         if (is_array($prodotti)) {
-
 
             $qta = checkIfLast($prodotti['qta']);
             $price = $prodotti['prezzo'];
@@ -32,8 +31,19 @@ function showCategory(array $catalogo, string $catName): void
                 $buttonStatus = "disabled";
             }
 
-            echo "<tr><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
-            <td><a class='btn btn-primary' " . $buttonStatus . " href='manage_products.php?id=".$prodotti['nome']."'>Gestisci</a></td>
+            $id = "0";
+            if (isset($prodotti['id_product'])) {
+                $id = $prodotti['id_product'];
+            }
+
+            $descrizione = "-";
+            if (isset($prodotti['descrizione'])) {
+                $descrizione = $prodotti['descrizione'];
+            }
+
+            echo "<tr><td>" . $id . "</td><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $descrizione . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
+            <td><a class='btn btn-primary' " . $buttonStatus . " href='manage_products.php?id=" . $id . "'>Gestisci</a>
+            <a class='btn btn-danger' " . $buttonStatus . " href='delete_product.php?id=" . $id . "'>Elimina</a></td>
             </tr>";
         }
     }
@@ -81,19 +91,21 @@ function showProductTable($catalogo)
     <table class="table table-bordered">
         <thead thead class="thead-dark">
             <tr>
+                <th>Id</th>
                 <th>Qta</th>
+                <th>Nome</th>
                 <th>Descrizione</th>
-                <th>Prezzo</th>
+                <th>€</th>
                 <th>Categoria</th>
-                <th>Buy</th>
+                <th>Operazioni</th>
             </tr>
         </thead>
-        <tbody></tbody>
-        <?php
-        foreach ($catalogo as $key => $categorie) {
-            showCategory($catalogo, $key);
-        }
-        ?>
+        <tbody>
+            <?php
+            foreach ($catalogo as $key => $categorie) {
+                showCategory($catalogo, $key);
+            }
+            ?>
         </tbody>
     </table>
 <?php
@@ -144,4 +156,56 @@ function readFileJson(string $path): array | null
         echo "Il file non esiste.";
         return null;
     }
+}
+
+
+/**
+ * getNewIdToInsert
+ *
+ * @param  mixed $catalogo
+ * @return int
+ */
+function getNewIdToInsert(array $catalogo): int
+{
+    $id = 0;
+    foreach ($catalogo as $catName => $categorie) {
+        foreach ($catalogo[$catName] as $key => $value) {
+            if ($value["id_product"] > $id) {
+                $id = $value["id_product"];
+            }
+        }
+    }
+
+    $id++;
+    return $id;
+}
+
+
+/**
+ * deleteUpdateProduct
+ *
+ * @param  mixed $catalogo
+ * @param  mixed $id
+ * @param  mixed $delete
+ * @param  mixed $params
+ * @return void
+ */
+function deleteUpdateProduct($catalogo, $id, $delete = false, $params = null)
+{
+    foreach ($catalogo as $catName => $categorie) {
+        foreach ($catalogo[$catName] as $key => $value) {
+            if ($value["id_product"] == $id) {
+                //DELETE
+                if ($delete) {
+                    unset($catalogo[$catName][$key]);
+                } else {
+                    echo "Eseguo update (TODO)";
+                    die();
+                }
+                break;
+            }
+        }
+    }
+    //update
+    return updateFileJson($catalogo, "data/products.json");
 }
