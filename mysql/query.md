@@ -56,3 +56,32 @@ select actorTbl.actor_id, count(filmActorTbl.film_id) as numFilm from actor as a
 select actorTbl.actor_id, count(filmActorTbl.film_id) as numFilm from actor as actorTbl INNER join film_actor As filmActorTbl on(actorTbl.actor_id = filmActorTbl.actor_id) where actorTbl.actor_id = 1;
 
 SELECT actor.actor_id, film_actor.actor_id, film.title, actor.first_name, actor.last_name, category.name FROM actor LEFT JOIN film_actor ON film_actor.actor_id = actor.actor_id LEFT JOIN film ON film_actor.film_id = film.film_id , category;
+
+INSERT INTO actor (first_name, last_name) VALUES ("Stefano","Accorsi"); 
+
+INSERT INTO  actor (first_name, last_name) VALUES ("Pierfrancesco", "Favino"), ("Sophia", "Loren"),("Alessandro", "Borghi");
+
+film 
+2 italiano
+INSERT INTO film (title,description,language_id) VALUES ("L'ultimo bacio", "L'ultimo bacio è un film del 2021 scritto e diretto da Gabriele Muccino", 2);
+
+insert into film_actor (actor_id,film_id) VALUES (201,1001);
+
+insert into film_category (film_id,category_id) VALUES (1001,5);
+
+select * from actor_info where last_name like "%accorsi%";
+
+UPDATE actor SET last_name = UPPER ('cruz') WHERE actor_id = 1;2
+
+UPDATE actor SET first_name = UPPER('Russell') WHERE actor_id = 105;
+
+esercizio
+INSERT INTO film (title,release_year,description,language_id, rental_duration,rental_rate, length, replacement_cost, rating,special_features) VALUES ("Top Gun",1986,"As students at the United States Navy's elite fighterweapons school compete to be best in the class",1,6,4.99,110,20.99, "G","Trailers,Commentaries");
+
+insert into film_category (film_id,category_id) VALUES (1002,1),(1002,7);
+
+insert into film_text (film_id,title,description) VALUES (1002,"Top Gun","As students at the United States Navy's elite fighterweapons school compete to be best in the class");
+
+*************************
+
+
