@@ -1,0 +1,16 @@
+<?php
+require_once "inc/functions.php";
+require_once "inc/session.php";
+
+
+if (empty($_SESSION["isAdmin"])) {
+    echo "Forbidden!";
+    die();
+}
+
+if (isset($_REQUEST["id"])) {
+    $id = $_REQUEST["id"];
+    deleteUpdateProduct($costumers,$id,true);
+}
+
+header("Location: costumers.php");

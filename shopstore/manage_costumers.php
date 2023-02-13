@@ -36,16 +36,16 @@ if (isset($_REQUEST["id"])) {
                     $email = $costumers['email'];
                     $phone = $costumers['telefono'];
                     $username = $costumers['username'];
-                    $password =$costumers['password'];
-                    $confirmpassword = $costumers['Confirm PassWord'];
-                    
+                    $password = $costumers['password'];
+                    $confirmpassword  = $costumers['confirmpassword'];
+                                       
                    
                 }
             }
         }
     }
 } else {
-    $id = getNewIdToInsert($costumers);
+    $id = getNewIdToInsertC($costumers);
 }
 ?>
 
@@ -59,7 +59,7 @@ if (isset($_REQUEST["id"])) {
         </div>
         <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?= $name ?>" required>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?= $nome ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="cognome">Cognome</label>
@@ -91,9 +91,12 @@ if (isset($_REQUEST["id"])) {
                     </div>
         
 
-        <button type="submit" class="btn btn-primary">Aggiungi prodotto</button>
+        <button type="submit" class="btn btn-primary">Aggiungi cliente</button>
     </form>
 </div>
 <?php
+
+
+
 
 require_once "inc/footer.php";

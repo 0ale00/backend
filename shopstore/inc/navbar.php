@@ -17,6 +17,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="manage_products.php">Gestisci prodotti</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="costumers.php">Clienti</a>
+                </li>
                     
                     <li class="nav-item">
                         <a class="nav-link" href="manage_costumers.php">Gestisci clienti</a>

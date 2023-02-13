@@ -178,3 +178,52 @@ function deleteUpdateProduct($catalogo, $id, $delete = false, $params = null)
     //update
     return updateFileJson($catalogo, "data/products.json");
 }
+
+
+
+/**
+ * getNewIdToInsertC
+ *
+ * @param  mixed $costumers
+ * @return int
+ */
+function getNewIdToInsertC(array $costumers): int
+{
+    $id = 0;
+    foreach ($costumers as $value) {
+                    if ($value["id_costumer"] > $id) {
+                $id = $value["id_costumer"];
+            }
+        }
+   
+    $id++;
+    return $id;
+}
+
+/**
+ * deleteUpdateCostumer
+ *
+ * @param  mixed $costumer
+ * @param  mixed $id
+ * @param  mixed $delete
+ * @param  mixed $params
+ * @return void
+ */
+function deleteUpdateCostumer($costumer, $id, $delete = false, $params = null)
+{
+    foreach ($costumer as $key => $value) {
+            if ($value["id_costumer"] == $id) {
+                //DELETE
+                if ($delete) {
+                    unset($costumer[$key]);
+                } else {
+                    echo "Eseguo update (TODO)";
+                    die();
+                }
+                break;
+       }
+    
+    //update
+    return updateFileJson($costumer, "data/anagrafica.json");
+}
+}
