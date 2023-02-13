@@ -17,6 +17,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="manage_products.php">Gestisci prodotti</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="manage_costumers.php">Gestisci clienti</a>
+                    </li>
+                   
+                    
                 <?php } else { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Carrello</a>
