@@ -1,0 +1,23 @@
+[
+    {
+    "nome": "Alessia",
+    "cognome": "Grande",
+    "username": "ale",
+    "pwd": "ale",
+    "photo": "https://dummyimage.com/300"
+  },
+    {
+    "nome": "guest",
+    "cognome": "guest",
+    "username": "guest",
+    "pwd": "guest",
+    "photo": "https://dummyimage.com/300"
+  },
+    {
+    "nome": "guest1",
+    "cognome": "guest1",
+    "username": "guest1",
+    "pwd": "guest1",
+    "photo": "https://dummyimage.com/300"
+  }
+]
