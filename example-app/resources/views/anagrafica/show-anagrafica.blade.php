@@ -3,7 +3,7 @@
 <head>
     <title>Mostra anagrafica</title>
 
-    @if (env('APP_ENV') == "pro")
+    @if (env('APP_ENV') == "local")
     <!-- //npm run dev -->
     @vite('resources/js/app.js')
     @else
