@@ -7,5 +7,8 @@ export default defineConfig({
             input: ['resources/js/app.js'],
             refresh: true,
         }),
-    ],
+           ],
 });
+
+
+

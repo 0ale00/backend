@@ -3,6 +3,8 @@
 use App\Http\Controllers\MyTestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CompanyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -103,3 +105,8 @@ Route::get('/user/{id}', function (Request $request, string $id) {
 Route::fallback(function () {
     return "Nessun indirizzo corrispondente alla tua richiesta!";
 });
+
+
+Route::resource('companies', CompanyController::class);
+
+Route::get('/transistor', [CompanyController::class,'transistor'])->name("transistor");
