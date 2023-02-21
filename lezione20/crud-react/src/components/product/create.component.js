@@ -28,7 +28,7 @@ export default function CreateProduct() {
     formData.append('description', description)
     formData.append('image', image)
 
-    await axios.post(`http://localhost:8000/api/products`, formData).then(({data})=>{
+    await axios.post(`http://localhost/esercizi/backend/crud-react-laravel/public/api/products`, formData).then(({data})=>{
       Swal.fire({
         icon:"success",
         text:data.message

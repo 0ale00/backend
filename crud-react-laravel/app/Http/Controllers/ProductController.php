@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::select('id','title','description','image')->get();
+        return Product::select('id', 'title', 'description', 'image')->get();
     }
 
     /**
@@ -29,25 +29,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        \Log::info("Richiesta di inserimento prodotto ricevuta");
         $request->validate([
-            'title'=>'required',
-            'description'=>'required',
-            'image'=>'required|image'
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|image'
         ]);
 
-        try{
-            $imageName = Str::random().'.'.$request->image->getClientOriginalExtension();
-            Storage::disk('public')->putFileAs('product/image', $request->image,$imageName);
-            Product::create($request->post()+['image'=>$imageName]);
+        try {
+            $imageName = Str::random() . '.' . $request->image->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('product/image', $request->image, $imageName);
+            Product::create($request->post() + ['image' => $imageName]);
+
+            \Log::info("Prodotto ".$request->title." creato correttamente");
 
             return response()->json([
-                'message'=>'Product Created Successfully!!'
+                'message' => 'Product Created Successfully!!'
             ]);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return response()->json([
-                'message'=>'Something goes wrong while creating a product!!'
-            ],500);
+                'message' => 'Something goes wrong while creating a product!!'
+            ], 500);
         }
     }
 
@@ -60,7 +63,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return response()->json([
-            'product'=>$product
+            'product' => $product
         ]);
     }
 
@@ -74,40 +77,39 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'title'=>'required',
-            'description'=>'required',
-            'image'=>'nullable'
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable'
         ]);
 
-        try{
+        try {
 
             $product->fill($request->post())->update();
 
-            if($request->hasFile('image')){
+            if ($request->hasFile('image')) {
 
                 // remove old image
-                if($product->image){
+                if ($product->image) {
                     $exists = Storage::disk('public')->exists("product/image/{$product->image}");
-                    if($exists){
+                    if ($exists) {
                         Storage::disk('public')->delete("product/image/{$product->image}");
                     }
                 }
 
-                $imageName = Str::random().'.'.$request->image->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('product/image', $request->image,$imageName);
+                $imageName = Str::random() . '.' . $request->image->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('product/image', $request->image, $imageName);
                 $product->image = $imageName;
                 $product->save();
             }
 
             return response()->json([
-                'message'=>'Product Updated Successfully!!'
+                'message' => 'Product Updated Successfully!!'
             ]);
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return response()->json([
-                'message'=>'Something goes wrong while updating a product!!'
-            ],500);
+                'message' => 'Something goes wrong while updating a product!!'
+            ], 500);
         }
     }
 
@@ -121,9 +123,9 @@ class ProductController extends Controller
     {
         try {
 
-            if($product->image){
+            if ($product->image) {
                 $exists = Storage::disk('public')->exists("product/image/{$product->image}");
-                if($exists){
+                if ($exists) {
                     Storage::disk('public')->delete("product/image/{$product->image}");
                 }
             }
@@ -131,13 +133,12 @@ class ProductController extends Controller
             $product->delete();
 
             return response()->json([
-                'message'=>'Product Deleted Successfully!!'
+                'message' => 'Product Deleted Successfully!!'
             ]);
-            
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return response()->json([
-                'message'=>'Something goes wrong while deleting a product!!'
+                'message' => 'Something goes wrong while deleting a product!!'
             ]);
         }
     }
