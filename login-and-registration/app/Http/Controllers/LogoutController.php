@@ -15,8 +15,9 @@ class LogoutController extends Controller
      */
     public function perform()
     {
+        \Log::channel('daily')->info('Utente sta eseguento il logout '.Auth::id());
         Session::flush();
-        
+
         Auth::logout();
 
         return redirect('login');
