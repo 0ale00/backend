@@ -7,9 +7,16 @@ use App\Models\Company;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Http\Requests\StoreCompanyRequest;
 
 class CompanyController extends Controller
 {
+    public function show()
+    {
+        return view('companies.welcome');
+    }
+
+
     public function index()
     {
         $data['companies'] = Company::orderBy('id', 'desc')->paginate(5);
@@ -43,13 +50,9 @@ class CompanyController extends Controller
      * @param  mixed $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(StoreCompanyRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'address' => 'required'
-        ]);
+
         $company = new Company;
         $company->name = $request->name;
         $company->email = $request->email;

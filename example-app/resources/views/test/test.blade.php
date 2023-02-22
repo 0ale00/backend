@@ -78,13 +78,24 @@ $emptyArray = [];
     @endphp
 
     <span @class([
-        'p-4' => $isActive,
-        'font-bold',
+        'p-4',
+        'font-bold'=> $isActive,
         'text-gray-500' => !$isActive,
         'bg-red' => $hasError,
     ])>La mia stringa</span>
 
     Qui sotto il mio componente<br>
+
+    @php
+    $isActive = true;
+@endphp
+ 
+<span @style([
+    'background-color: grey',
+    'font-weight: bold' => $isActive,
+])>stile css</span>
+ 
+<span style="background-color: grey; font-weight: bold;"></span>
 
     @php
         $message = 'Non funziona nulla!';
