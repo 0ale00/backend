@@ -89,10 +89,19 @@ class DbController extends Controller
     }
 
 
-    /*  public function update($array)
+    public function update(string $id)
     {
+        $updated = DB::update('update companies set (name,email,address) values (?, ?,?) where id = ?', [$id]);
+        if (!$updated) {
+            return redirect('/dbtest/show/')
+                ->with('error', 'La compagnia NON è stata aggiornata.');
+        }
+
+        return redirect('/dbtest/show/')
+            ->with('success', 'La compagnia è stata aggiornata con successo.');
+
     }
-    */
+    
     public function delete(string $id)
     {
 

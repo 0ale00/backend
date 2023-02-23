@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ArticleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +21,4 @@ Route::get('/', function () {
 //TODO mostrare lista titoli articoli e autore  paginato per 15 a pagina
 
 
+Route::get('/article/show', [ArticleController::class, 'show']);
