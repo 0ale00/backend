@@ -8,14 +8,23 @@
     
     
     <h2>Titoli</h2>
-   
-   
-   {{-- @foreach ($articles as $article)  --}}
-     {{-- <tr>
-        <td>{{ $articles}}</td>
-    </tr>  --}}
+   {{-- <table>
+    <tr>
+    <th>Titolo</th>
+    </tr>
 
+    @foreach ($articles as $article) 
+    
    
+   <tr>
+    <td>{{ $articles->title }}</td>
+   </tr>
+
+</table> --}}
+
+
+{{-- @foreach ($articles as $key => $value) --}}
+
 
 
 </body>
