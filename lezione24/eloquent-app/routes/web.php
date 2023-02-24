@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\FlightController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::resource('voli', FlightController::class)->missing(function () {
+    return Redirect::route('voli.index');
+});
+
+Route::get('userphone/{id}', [UserController::class, 'phone']);
+Route::get('phoneid/{idphone}', [UserController::class, 'getUserFromIdPhone']);
+
+use App\Http\Resources\UserResource;
+use App\Models\User;
+Route::get('/user/{id}', function (string $id) {
+    return new UserResource(User::findOrFail($id));
+});
+
+use App\Http\Resources\FlightResource;
+use App\Models\flight;
+Route::get('/volo/{id}', function (string $id) {
+    return new UserResource(Flight::findOrFail($id));
 });
