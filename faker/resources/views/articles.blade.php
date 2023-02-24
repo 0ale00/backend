@@ -1,30 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Titoli aticoli</title>
+    <meta charset="UTF-8">
+    <title>Company Crud</title>
 </head>
 
 <body>
-    
-    
-    <h2>Titoli</h2>
-   {{-- <table>
-    <tr>
-    <th>Titolo</th>
-    </tr>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <div class="pull-left">
+                    <h2>CRUD DB</h2>
+                </div>
 
-    @foreach ($articles as $article) 
-    
-   
-   <tr>
-    <td>{{ $articles->title }}</td>
-   </tr>
+            </div>
+        </div>
 
-</table> --}}
-
-
-{{-- @foreach ($articles as $key => $value) --}}
-
-
-
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            @foreach ($articles as $article)
+                <tr>
+                    <td>{{ $article->title }}</td>
+                    <td>{{ $article->description }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="">Mostra</a>
+                        <a class="btn btn-primary" href="">Edit</a>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+        {!! $articles->links() !!}
 </body>
+
+</html>
